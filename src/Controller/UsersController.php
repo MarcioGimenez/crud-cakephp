@@ -2,12 +2,18 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Event\Event;
 /**
 * Controller para gerenciamento de Users
 @copyright Copyright (c) Marcio Gimenez
 */
 class UsersController extends AppController
 {
+	public function beforeFilter(Event $event)
+	{
+		parent::beforeFilter($event);
+		$this->Auth->allow('add');
+	}
 	public function login()
     {
     	if($this->request->is('post')){
